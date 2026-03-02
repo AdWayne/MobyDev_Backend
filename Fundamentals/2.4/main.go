@@ -29,7 +29,7 @@ func main() {
 	tempAfternoon := 20
 	tempEvening := 30
 	totalTemp := tempAfternoon + tempEvening + tempMorning
-	averageTemp := totalTemp / 3
+	averageTemp := float64(totalTemp) / 3
 	fmt.Println("Тотал:", totalTemp)
 	fmt.Println("Авераж:", averageTemp)
 	fmt.Println()
@@ -37,8 +37,8 @@ func main() {
 	//4 zadanie
 	knownWords := 47
 	wordsGoal := 120
-	progressPercent := (wordsGoal * knownWords) / 100
-	fmt.Printf("%d%%", progressPercent)
+	progressPercent := (float64(knownWords) / float64(wordsGoal)) * 100
+	fmt.Printf("%.1f%%\n", progressPercent)
 	fmt.Println()
 	fmt.Println()
 
