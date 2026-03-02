@@ -48,7 +48,9 @@ func main() {
 	fmt.Println()
 
 	//4 zadanie
-	number := 20
+	var number int
+	fmt.Print("Введите число:")
+	fmt.Scanln(&number)
 	if number%2 == 0 {
 		fmt.Println("Четное")
 	} else {
@@ -87,7 +89,7 @@ func main() {
 	fmt.Scanln(&age)
 	if age < 13 {
 		fmt.Println("Ребёнок")
-	} else if age <= 13 && age >= 17 {
+	} else if age >= 13 && age <= 17 {
 		fmt.Println("Подросток")
 	} else {
 		fmt.Println("Взрослый")
