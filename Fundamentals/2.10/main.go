@@ -6,7 +6,7 @@ import (
 
 func main() {
 	//1 zadanie
-	for i := 1; i <= 10; i++{
+	for i := 1; i <= 20; i++{
 		fmt.Println(i)
 	}
 	fmt.Println()
@@ -21,7 +21,7 @@ func main() {
 
 	//3 zadanie
 	number := 5
-	for i := 1; i<10; i++ {
+	for i := 1; i<=10; i++ {
 		summa := number * i
 		fmt.Println(number,"*", i,"=",summa)
 	}
