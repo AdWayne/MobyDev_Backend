@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "description": "Сделать домашку по Go",
+    "created_at": "2026-04-05T12:00:00Z",
+    "is_done": false
+  },
+  {
+    "id": 2,
+    "description": "Пойти в зал",
+    "created_at": "2026-04-05T13:00:00Z",
+    "is_done": false
+  }
+]
