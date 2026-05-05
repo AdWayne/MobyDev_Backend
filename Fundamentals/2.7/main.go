@@ -1,37 +1,37 @@
 package main
 
-import ("fmt")
+import (
+	"fmt"
+)
 
-func main()  {
-	//1 zadanie
-	fmt.Println(5 == 5) //true
-	fmt.Println(10 != 3) //true
-	fmt.Println(7 > 12) //false
-	fmt.Println(15 < 20) //true
-	fmt.Println(8 >= 8) //true
-	fmt.Println(6 <= 4) //false
-	fmt.Println((10 > 5) && (3 < 1)) //false
-	fmt.Println((10 > 5) || (3 < 1)) //true
-	fmt.Println(!(5 == 5)) //false
-	fmt.Println(!(7 < 3)) //true
-	fmt.Println(true && false) //false
-	fmt.Println(false || false) //false
-	fmt.Println(true || false) //true
-	fmt.Println((4 + 6 == 10) && (9 > 2)) //true
-	fmt.Println((12 / 3 == 4) || (8 < 5)) //true
-	fmt.Println()
+func main() {
+	const BaseRate = 5.50
+	const TaxRate = 0.12
+	const DistanceRate = 2.0
+	const FragileFee = 0.2
 
-	//2 zadanie
-	var age int = 18
-	var hasTicket bool = true
-	canEnter := (age >= 18 && hasTicket)
-	fmt.Println(canEnter)
-	fmt.Println()
+	var name string
+	var weight float64
+	var distance float64
+	var fragileCount int
 
-	//3 zadanie
-	var isLoggedln bool = false
-	var isAdmin bool = true
-	hasAcces := (isLoggedln && isAdmin) || (isLoggedln && !isAdmin)
-	fmt.Println(hasAcces)	
-	fmt.Println()
-} 
+	fmt.Print("Введите имя: ")
+	fmt.Scan(&name)
+
+	fmt.Print("Вес груза (кг): ")
+	fmt.Scan(&weight)
+
+	fmt.Print("Дистанция (км): ")
+	fmt.Scan(&distance)
+
+	fmt.Print("Количество хрупких упаковок: ")
+	fmt.Scan(&fragileCount)
+
+	baseCost := (weight*BaseRate)*(1+FragileFee*float64(fragileCount)) + (distance * DistanceRate)
+
+	totalCost := baseCost * (1 + TaxRate)
+
+	fmt.Println("\nОтчет о доставке")
+	fmt.Printf("Отправитель: %s\n", name)
+	fmt.Printf("Итоговая стоимость: %.2f\n", totalCost)
+}
