@@ -30,7 +30,7 @@ func main() {
 	baseCost := (weight*BaseRate)*(1+FragileFee*float64(fragileCount)) + (distance * DistanceRate)
 
 	totalCost := baseCost * (1 + TaxRate)
-
+//
 	fmt.Println("\nОтчет о доставке")
 	fmt.Printf("Отправитель: %s\n", name)
 	fmt.Printf("Итоговая стоимость: %.2f\n", totalCost)
