@@ -1,91 +1,124 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	//1 zadanie
-	var massiv [3][5]int
-	row, col := 0, 0
-	maxVal := -1 << 63 //для отрицательных м максимальных значений
-	fmt.Println("Массив 3 столбец 5 строк")
-	for i := 0; i < 3; i++ {
-		for j := 0; j < 5; j++ {
-			fmt.Scan(&massiv[i][j])
-			if massiv[i][j] > maxVal {
-				maxVal = massiv[i][j]
-				row, col = i, j
-			}
-		}
-	}
-	fmt.Println(row, col)
+	//1
+	var text string
+	text = "Golang"
+	const author string = "Azamat"
+	fmt.Printf("Автор %s написал: %s\n", author, text)
+	fmt.Println("Длина текста:", len(text))
 	fmt.Println()
 
-	//2 zadanie
-	const a = 11
-	var massiv2 [a][a]string
-	mid := a / 2
-
-	for i := 0; i < a; i++ {
-		for j := 0; j < a; j++ {
-			if i == mid || j == mid || i == j || i+j == a-1 {
-				massiv2[i][j] = "*"
-			} else {
-				massiv2[i][j] = "."
-			}
-		}
+	//2
+	var message string = "Привет, мир!"
+	if message == "" {
+		fmt.Println("Строка пустая")
+	} else {
+		fmt.Println("Строка не пустая")
 	}
-
-	for i := 0; i < a; i++ {
-		for j := 0; j < a; j++ {
-			fmt.Print(massiv2[i][j], " ")
-		}
-		fmt.Println()
-	}
+	fmt.Println("Длина текста:", len(message))
 	fmt.Println()
 
-	//3 zadanie
-	const c = 8
-	var chessporidak [c][c]string
-	for i := 0; i < c; i++ {
-		for j := 0; j < c; j++ {
-			if (i+j)%2 == 0 {
-				chessporidak[i][j] = "."
-			} else {
-				chessporidak[i][j] = "*"
-			}
-			fmt.Print(chessporidak[i][j], " ")
-		}
-		fmt.Println()
+	//3
+	var input string
+	fmt.Print("Введите строку: ")
+	fmt.Scan(&input)
+	if len(input) < 5 {
+		fmt.Println("Слишком короткое слово")
+	} else if len(input) >= 5 && len(input) <= 10 {
+		fmt.Println("Нормальная длина")
+	} else {
+		fmt.Println("Слишком длинное слово")
 	}
 	fmt.Println()
-
-	//4-5 zadanie
-	var matrix [4][4]int
-	for i := 0; i < 4; i++ {
-		for j := 0; j < 4; j++ {
-			fmt.Scan(&matrix[i][j])
-		}
-	}
-
-	var i, j int
-	fmt.Scan(&i, &j)
 
 	//4
-	matrix[i-1], matrix[j-1] = matrix[j-1], matrix[i-1]
+	word := "Programma"
 
-	for _, row := range matrix {
-	    fmt.Println(row)
+	first := word[0]
+	last := word[len(word)-1]
+
+	fmt.Printf("Первый символ: %c\n", first)
+	fmt.Printf("Последний символ: %c\n", last)
+
+	for i := 0; i < len(word); i++ {
+		fmt.Printf("%c\n", word[i])
 	}
 
-	//5
-	// for row := 0; row < 4; row++ {
-	// 	matrix[row][i], matrix[row][j] = matrix[row][j], matrix[row][i]
-	// }
+	fmt.Println("Длина строки:", len(word))
 
-	// for r := 0; r < 4; r++ {
-	// 	for c := 0; c < 4; c++ {
-	// 		fmt.Printf("%d ", matrix[r][c])
-	// 	}
-	// 	fmt.Println()
-	// }
+	//5
+	sentence := "Hi, salam mister"
+	countA := 0
+
+	for _, ch := range sentence {
+		if ch == 'a' || ch == 'A' || ch == 'а' || ch == 'А' {
+			countA++
+		}
+	}
+
+	fmt.Printf("В строке %d символов и %d букв a\n",
+		len(sentence),
+		countA,
+	)
+	fmt.Println()
+
+	//6
+	var soz string
+
+	fmt.Printf("Введите строку: ")
+	fmt.Scanln(&soz)
+
+	var reversed string
+
+	for i := len(soz) - 1; i >= 0; i-- {
+		reversed += string(soz[i])
+	}
+
+	fmt.Println("Исходная строка:", soz)
+	fmt.Println("Перевернутая строка:", reversed)
+
+	if soz == reversed {
+		fmt.Println("Это палиндром")
+	} else {
+		fmt.Println("Это не палиндром")
+	}
+	fmt.Println()
+
+	//8
+	var soilem string
+
+	fmt.Print("Введите строку: ")
+	fmt.Scanln(&soilem)
+
+	length := len(soilem)
+
+	words := 1
+	for i := 0; i < len(soilem); i++ {
+		if soilem[i] == ' ' {
+			words++
+		}
+	}
+
+	vowels := 0
+	vowelLetters := "aeiouyAEIOUY"
+
+	for i := 0; i < len(soilem); i++ {
+		for j := 0; j < len(vowelLetters); j++ {
+			if soilem[i] == vowelLetters[j] {
+				vowels++
+			}
+		}
+	}
+
+	fmt.Printf(
+		"Длина строки: %d, слов: %d, гласных: %d\n",
+		length,
+		words,
+		vowels,
+	)
 }
