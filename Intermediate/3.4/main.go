@@ -1,132 +1,91 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "fmt"
 
 func main() {
 	//1 zadanie
-	var numbers []int
-	var x int
-
-	for {
-		fmt.Print("0 for exit: ")
-		fmt.Scan(&x)
-
-		if x == 0 {
-			break
+	var massiv [3][5]int
+	row, col := 0, 0
+	maxVal := -1 << 63 //для отрицательных м максимальных значений
+	fmt.Println("Массив 3 столбец 5 строк")
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 5; j++ {
+			fmt.Scan(&massiv[i][j])
+			if massiv[i][j] > maxVal {
+				maxVal = massiv[i][j]
+				row, col = i, j
+			}
 		}
-
-		numbers = append(numbers, x)
 	}
-
-	sum := 0
-
-	for _, v := range numbers {
-		sum += v
-	}
-	fmt.Println()
-	fmt.Println("Задание 1:")
-	fmt.Println("Слайс:", numbers)
-	fmt.Println("Сумма:", sum)
+	fmt.Println(row, col)
 	fmt.Println()
 
 	//2 zadanie
-	var even []int
-	for _, e := range numbers {
-		if e%2 == 0 {
-			even = append(even, e)
+	const a = 11
+	var massiv2 [a][a]string
+	mid := a / 2
+
+	for i := 0; i < a; i++ {
+		for j := 0; j < a; j++ {
+			if i == mid || j == mid || i == j || i+j == a-1 {
+				massiv2[i][j] = "*"
+			} else {
+				massiv2[i][j] = "."
+			}
 		}
 	}
-	fmt.Println("Задание 2:")
-	fmt.Println("Исходный:", numbers)
-	fmt.Println("Четные:", even)
+
+	for i := 0; i < a; i++ {
+		for j := 0; j < a; j++ {
+			fmt.Print(massiv2[i][j], " ")
+		}
+		fmt.Println()
+	}
 	fmt.Println()
 
 	//3 zadanie
-	data := make([]int, len(numbers))
-	copy(data, numbers)
-
-	if len(data) > 2 {
-		data = append(data[:2], data[3:]...)
-	}
-	fmt.Println("Задание 3:")
-	fmt.Println(data)
-	fmt.Println()
-
-	//4 zadanie
-	if len(numbers) > 0 {
-		min := numbers[0]
-		max := numbers[0]
-
-		for _, temps := range numbers {
-			if temps < min {
-				min = temps
+	const c = 8
+	var chessporidak [c][c]string
+	for i := 0; i < c; i++ {
+		for j := 0; j < c; j++ {
+			if (i+j)%2 == 0 {
+				chessporidak[i][j] = "."
+			} else {
+				chessporidak[i][j] = "*"
 			}
-			if temps > max {
-				max = temps
-			}
+			fmt.Print(chessporidak[i][j], " ")
 		}
-		fmt.Println("Задание 4:")
-		fmt.Println("Min:", min)
-		fmt.Println("Max:", max)
 		fmt.Println()
 	}
-
-	//5 zadanie
-	var words []string
-	var str string
-	var reversed []string
-
-	for {
-		fmt.Print("stop for exit: ")
-		fmt.Scan(&str)
-
-		if str == "stop" {
-			break
-		}
-
-		words = append(words, str)
-	}
-
-	for i := len(words) - 1; i >= 0; i-- {
-		reversed = append(reversed, words[i])
-	}
-
-	fmt.Println("Задание 5:")
-	fmt.Println("Исходный:", words)
-	fmt.Println("Reverse:", reversed)
 	fmt.Println()
 
-	//6 zadanie
-	sorted := true
-	sorted = sort.IntsAreSorted(numbers)
-	fmt.Println("Задания 6:", sorted)
-
-	//7 zadanie
-	myWishList := []string{"Phone", "Laptop"}
-	friendsWishList := []string{"House", "BWV"}
-
-	var registrationList []string
-
-	for _, s := range myWishList{
-		registrationList = append(registrationList, s)
-	}
-	for _, s := range friendsWishList{
-		registrationList = append(registrationList, s)
+	//4-5 zadanie
+	var matrix [4][4]int
+	for i := 0; i < 4; i++ {
+		for j := 0; j < 4; j++ {
+			fmt.Scan(&matrix[i][j])
+		}
 	}
 
-	fmt.Println("Задние 7:",registrationList)
+	var i, j int
+	fmt.Scan(&i, &j)
 
-	//8 zadanie
-	toyList := []string{"Car", "Doll", "Ball"}
-	testToyList := make([]string, len(toyList))
-	copy(testToyList, toyList)
+	//4
+	matrix[i-1], matrix[j-1] = matrix[j-1], matrix[i-1]
 
-	testToyList[1] = "Boat"
+	for _, row := range matrix {
+	    fmt.Println(row)
+	}
 
-	fmt.Println("Задание 8:")
-	fmt.Println("toyList:", toyList)
-	fmt.Println("testToyList:", testToyList)
+	//5
+	// for row := 0; row < 4; row++ {
+	// 	matrix[row][i], matrix[row][j] = matrix[row][j], matrix[row][i]
+	// }
+
+	// for r := 0; r < 4; r++ {
+	// 	for c := 0; c < 4; c++ {
+	// 		fmt.Printf("%d ", matrix[r][c])
+	// 	}
+	// 	fmt.Println()
+	// }
 }

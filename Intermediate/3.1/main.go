@@ -1,109 +1,109 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
-	fmt.Println()
-	//1 zadanie
-	run := [3]string{"Бег","Разножка","Олений бег"}
-	fmt.Println(run)
-	hodba := [2]string{"Ходьба","Шаги"}
-	fmt.Println(hodba)
-	lenght := len(run)
-	fmt.Println(lenght)
-	lenght2 := len(hodba)
-	fmt.Println(lenght2)
-	fmt.Println()
-	
-	//2 zadanie
-	subjectsList := [3]string{"Физика","Химия","География"}
-	fmt.Println(subjectsList[0])
-	fmt.Println(subjectsList[2])
-	
-	subjectsList[1] = "Биология"
+	// Задание 1
+	var text string = "Программирование на Go"
+	const author string = "Azamat"
 
-	fmt.Println("Обновленный массив:", subjectsList)
+	fmt.Printf("Автор %s написал: %s\n", author, text)
+	fmt.Println("Длина текста:", len(text))
 	fmt.Println()
 
-	//3 zadanie
-	Person := [3]string{"Tom","35","New York"}
-	name := Person[0]
-	age := Person[1]
-	home := Person[2]
+	// Задание 2
+	var message string = "Я учу Golang язык программирование"
 
-	fmt.Println(name)
-	fmt.Println(age)
-	fmt.Println(home)
-	fmt.Println()
-
-	//4 zadanie
-	numberList := [5]int{1,2,3,4,5}
-	found := false
-
-	for i := 0; i < len(numberList); i++ {
-		if numberList[i] == 3{
-			found = true
-			break
-		}
+	if message == "" {
+		fmt.Println("Строка пуста")
+	} else {
+		fmt.Println("Строка не пустая")
 	}
-	if found{
-		fmt.Println("Нашел")
-	}else {
-		fmt.Println("Не нашел")
+
+	fmt.Println("Длина строки:", len(message))
+	fmt.Println()
+
+	// Задание 3
+	var input string
+	fmt.Print("Введите слово: ")
+	fmt.Scan(&input)
+
+	if len(input) < 5 {
+		fmt.Println("Слишком короткое слово")
+	} else if len(input) <= 10 {
+		fmt.Println("Нормальная длина")
+	} else {
+		fmt.Println("Слишком длинное слово")
 	}
 	fmt.Println()
 
-	//5 zadanie
-	friendsList := [3]string{"Medet","Bahytjan","Alpamus"}
-	found5 := false
+	// Задание 4
+	var word string = "Golang"
 
-	for _, name := range friendsList {
-		if name == "Bekbolat" {
-			found5 = true
-			break
+	fmt.Println("Первый символ:", string(word[0]))
+	fmt.Println("Последний символ:", string(word[len(word)-1]))
+
+	fmt.Println("Все символы:")
+	for i := 0; i < len(word); i++ {
+		fmt.Println(string(word[i]))
+	}
+
+	fmt.Println("Длина слова:", len(word))
+	fmt.Println()
+
+	// Задание 5
+	var sentence string = "Мама"
+
+	countA := 0
+	for _, ch := range sentence {
+		if ch == 'а' || ch == 'А' {
+			countA++
 		}
 	}
 
-	if found5 {
-		fmt.Println("Мне очень повезло")
-	}else{
-		fmt.Println("Мне не повезло")
-	}
+	fmt.Printf("В строке %d символов и %d букв а\n", len(sentence), countA)
 	fmt.Println()
 
-	//6 zadanie
-	firstList := [3]int{1,2,3}
-	secondList := [3]int{1,2,4}
-	
-	if firstList == secondList{
-		fmt.Println("Массивы верны")
-	}else {
-		fmt.Println("Не равны")
+	// Задание 6
+	var soz string
+	fmt.Print("Проверка палиндрома: ")
+	fmt.Scan(&soz)
+
+	var reversed string
+	for i := len(soz) - 1; i >= 0; i-- {
+		reversed += string(soz[i])
 	}
+
+	if soz == reversed {
+		fmt.Println("Это палиндром")
+	} else {
+		fmt.Println("Это не палиндром")
+	}
+
+	fmt.Println("Исходная строка:", soz)
+	fmt.Println("Перевёрнутая строка:", reversed)
 	fmt.Println()
 
-	//7 zadanie
-	myWishList := []string{"Квартира в Алмате,"}
-	friendsWishList := []string{"Альтушку,","IT Startapp."}
-	registrationList := []string{}
+	// Задание 7
+	var line string
+	fmt.Print("Введите текст: ")
+	fmt.Scanln()
+	fmt.Scanln(&line)
 
-	for _, item := range myWishList {
-		registrationList = append(registrationList, item)
+	length := len(line)
+	words := len(strings.Fields(line))
+
+	vowels := "aeiouyAEIOUY"
+	countVowels := 0
+
+	for i := 0; i < len(line); i++ {
+		if strings.ContainsRune(vowels, rune(line[i])) {
+			countVowels++
+		}
 	}
 
-	for _, item := range friendsWishList{
-		registrationList = append(registrationList, item)
-	}
-	fmt.Println(myWishList)
-	fmt.Println(friendsWishList)
-	fmt.Println("Общий список подарков:", registrationList)
-	fmt.Println()
-
-	//8 zadanie
-	toyList := [3]string{"Car","Doll","Ball"}
-	testToyList := toyList
-
-	testToyList[1] = "Boat"
-	fmt.Println(toyList)
-	fmt.Println(testToyList)
+	fmt.Printf("Длина строки: %d, слов: %d, гласных: %d\n", length, words, countVowels)
 }
